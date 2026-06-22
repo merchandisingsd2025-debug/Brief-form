@@ -191,51 +191,64 @@
         </div>
 
         <form id="briefForm">
+            <!-- توکن اختصاصی Web3Forms شما -->
             <input type="hidden" name="access_key" value="17c360d8-5830-4edc-8b4c-f3ab261f202b">
+            <!-- ارسال خودکار رونوشت (CC) به ایمیل همکار/سازمان شما -->
+            <input type="hidden" name="cc" value="bahram.na@mtnirancell.ir">
+            <!-- جلوگیری از تغییر صفحه بعد از ثبت فرم -->
             <input type="hidden" name="redirect" value=""> 
 
             <div class="form-grid">
                 
+                <!-- هدف تجاری -->
                 <div class="form-group full-width">
                     <label for="business_goal">هدف تجاری <span>(محصول چیست؟ چه مشکلی حل می‌کند؟ برای چه کسی است؟ مزیت اصلی و رقابتی چیست؟)</span></label>
-                    <textarea id="business_goal" name="هدف تجاری" required placeholder="مثال: محصول هارد اکسترنال مقاوم... بازار هدف کاربران عمومی و حرفه‌ای..."></textarea>
+                    <textarea id="business_goal" name="هدف تجاری" required placeholder="مثال: معرفی محصول، ویژگی‌ها، پرسونای مخاطب و بازار هدف..."></textarea>
                 </div>
 
+                <!-- شعار اصلی -->
                 <div class="form-group">
                     <label for="main_headline">شعار یا تیتر اصلی <span>(فارسی/انگلیسی)</span></label>
                     <input type="text" id="main_headline" name="شعار یا تیتر اصلی" required placeholder="مثال: یادت همیشه همراهته">
                 </div>
 
+                <!-- شعار فرعی -->
                 <div class="form-group">
                     <label for="sub_headline">شعار یا تیتر فرعی <span>(فارسی/انگلیسی)</span></label>
                     <input type="text" id="sub_headline" name="شعار یا تیتر فرعی" placeholder="مثال: انواع هارد اکسترنال و فلش مموری؛ هم اکنون!">
                 </div>
 
+                <!-- ویژگی‌های اصلی -->
                 <div class="form-group">
                     <label for="features">ویژگی‌های اصلی محصول <span>(ساعت شارژ، تعداد پورت و...)</span></label>
                     <input type="text" id="features" name="ویژگی‌های اصلی محصول" placeholder="مثال: ضد ضربه، سرعت بالا">
                 </div>
 
+                <!-- کال تو اکشن -->
                 <div class="form-group">
                     <label for="cta">کال تو اکشن (CTA)</label>
                     <input type="text" id="cta" name="کال تو اکشن (CTA)" placeholder="مثال: کلیک کنید / الان بخرید">
                 </div>
 
+                <!-- تعداد سایزها و ابعاد -->
                 <div class="form-group">
                     <label for="banner_sizes">تعداد و ابعاد سایزهای درخواستی <span>(پیکسل)</span></label>
                     <input type="text" id="banner_sizes" name="تعداد و ابعاد سایزها" required placeholder="مثال: 1080*1920 و 245*600">
                 </div>
 
+                <!-- محدودیت حجم -->
                 <div class="form-group">
                     <label for="size_limit">محدودیت حجم خروجی</label>
                     <input type="text" id="size_limit" name="محدودیت حجم خروجی" placeholder="مثال: 280kb">
                 </div>
 
+                <!-- لینک‌های محل قرارگیری -->
                 <div class="form-group">
                     <label for="placement_links">لینک‌های محل قرارگیری بنر</label>
                     <input type="url" id="placement_links" name="لینک‌های محل قرارگیری" placeholder="https://market.irancell.ir">
                 </div>
 
+                <!-- زبان -->
                 <div class="form-group">
                     <label for="language">زبان بنر</label>
                     <select id="language" name="زبان بنر">
@@ -245,7 +258,10 @@
                     </select>
                 </div>
 
-                <span></span> <div class="form-group full-width">
+                <span></span> <!-- المان کمکی جهت تراز ماتریکس گرید -->
+
+                <!-- توضیحات و ملزومات -->
+                <div class="form-group full-width">
                     <label for="notes">توضیحات و ملزومات اضافه <span>(مانند استفاده از لوگوی خاص در طرح و...)</span></label>
                     <textarea id="notes" name="توضیحات و ملزومات اضافه" placeholder="مثال: از لوگوی اسنپ/ایرانسل در طرح استفاده شود..."></textarea>
                 </div>
@@ -285,7 +301,7 @@
                 let res = await response.json();
                 if (response.status == 200) {
                     resultMessage.className = "result-message success";
-                    resultMessage.innerText = "بریف با موفقیت ثبت شد و مستقیماً به ایمیل طراح ارسال گردید.";
+                    resultMessage.innerText = "بریف با موفقیت ثبت شد و مستقیماً به ایمیل طراحان ارسال گردید.";
                     resultMessage.style.display = 'block';
                     form.reset();
                 } else {
