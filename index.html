@@ -12,6 +12,7 @@
             --text-color: #E2E8F0;
             --muted-text: #94A3B8;
             --border-color: #262930;
+            --success-color: #10B981;
         }
 
         * {
@@ -38,7 +39,7 @@
             border-radius: 16px;
             padding: 40px;
             width: 100%;
-            max-width: 1400px; /* عریض برای مانیتورهای بزرگ */
+            max-width: 1400px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
@@ -137,6 +138,27 @@
             transform: translateY(0);
         }
 
+        .result-message {
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        .result-message.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+        }
+
+        .result-message.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid #EF4444;
+            color: #EF4444;
+        }
+
         /* واکنش‌گرایی برای تبلت و موبایل */
         @media (max-width: 1024px) {
             .form-grid {
@@ -162,59 +184,61 @@
 </head>
 <body>
 
-<form action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="17c360d8-5830-4edc-8b4c-f3ab261f202b">
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
-  <textarea name="message" required></textarea>
-  <button type="submit">Submit</button>
-</form>
+    <div class="form-container">
+        <div class="form-header">
+            <h1>فرم ثبت بریف کمپین (ST2000 - Webbanner & KV)</h1>
+            <p>لطفاً اطلاعات زیر را جهت هماهنگی و شروع دیزاین بنرها با دقت وارد کنید.</p>
+        </div>
+
         <form id="briefForm">
+            <input type="hidden" name="access_key" value="17c360d8-5830-4edc-8b4c-f3ab261f202b">
+            <input type="hidden" name="redirect" value=""> 
+
             <div class="form-grid">
                 
                 <div class="form-group full-width">
                     <label for="business_goal">هدف تجاری <span>(محصول چیست؟ چه مشکلی حل می‌کند؟ برای چه کسی است؟ مزیت اصلی و رقابتی چیست؟)</span></label>
-                    <textarea id="business_goal" required placeholder="مثال: محصول هارد اکسترنال مقاوم... بازار هدف کاربران عمومی و حرفه‌ای..."></textarea>
+                    <textarea id="business_goal" name="هدف تجاری" required placeholder="مثال: محصول هارد اکسترنال مقاوم... بازار هدف کاربران عمومی و حرفه‌ای..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="main_headline">شعار یا تیتر اصلی <span>(فارسی/انگلیسی)</span></label>
-                    <input type="text" id="main_headline" required placeholder="مثال: یادت همیشه همراهته">
+                    <input type="text" id="main_headline" name="شعار یا تیتر اصلی" required placeholder="مثال: یادت همیشه همراهته">
                 </div>
 
                 <div class="form-group">
                     <label for="sub_headline">شعار یا تیتر فرعی <span>(فارسی/انگلیسی)</span></label>
-                    <input type="text" id="sub_headline" placeholder="مثال: انواع هارد اکسترنال و فلش مموری؛ هم اکنون!">
+                    <input type="text" id="sub_headline" name="شعار یا تیتر فرعی" placeholder="مثال: انواع هارد اکسترنال و فلش مموری؛ هم اکنون!">
                 </div>
 
                 <div class="form-group">
                     <label for="features">ویژگی‌های اصلی محصول <span>(ساعت شارژ، تعداد پورت و...)</span></label>
-                    <input type="text" id="features" placeholder="مثال: ضد ضربه، سرعت بالا">
+                    <input type="text" id="features" name="ویژگی‌های اصلی محصول" placeholder="مثال: ضد ضربه، سرعت بالا">
                 </div>
 
                 <div class="form-group">
                     <label for="cta">کال تو اکشن (CTA)</label>
-                    <input type="text" id="cta" placeholder="مثال: کلیک کنید / الان بخرید">
+                    <input type="text" id="cta" name="کال تو اکشن (CTA)" placeholder="مثال: کلیک کنید / الان بخرید">
                 </div>
 
                 <div class="form-group">
                     <label for="banner_sizes">تعداد و ابعاد سایزهای درخواستی <span>(پیکسل)</span></label>
-                    <input type="text" id="banner_sizes" required placeholder="مثال: 1080*1920 و 245*600">
+                    <input type="text" id="banner_sizes" name="تعداد و ابعاد سایزها" required placeholder="مثال: 1080*1920 و 245*600">
                 </div>
 
                 <div class="form-group">
                     <label for="size_limit">محدودیت حجم خروجی</label>
-                    <input type="text" id="size_limit" placeholder="مثال: 280kb">
+                    <input type="text" id="size_limit" name="محدودیت حجم خروجی" placeholder="مثال: 280kb">
                 </div>
 
                 <div class="form-group">
                     <label for="placement_links">لینک‌های محل قرارگیری بنر</label>
-                    <input type="url" id="placement_links" placeholder="https://market.irancell.ir">
+                    <input type="url" id="placement_links" name="لینک‌های محل قرارگیری" placeholder="https://market.irancell.ir">
                 </div>
 
                 <div class="form-group">
                     <label for="language">زبان بنر</label>
-                    <select id="language">
+                    <select id="language" name="زبان بنر">
                         <option value="فارسی">فارسی</option>
                         <option value="انگلیسی">انگلیسی</option>
                         <option value="فارسی/انگلیسی">دو زبانه (فارسی/انگلیسی)</option>
@@ -223,62 +247,64 @@
 
                 <span></span> <div class="form-group full-width">
                     <label for="notes">توضیحات و ملزومات اضافه <span>(مانند استفاده از لوگوی خاص در طرح و...)</span></label>
-                    <textarea id="notes" placeholder="مثال: از لوگوی اسنپ/ایرانسل در طرح استفاده شود..."></textarea>
+                    <textarea id="notes" name="توضیحات و ملزومات اضافه" placeholder="مثال: از لوگوی اسنپ/ایرانسل در طرح استفاده شود..."></textarea>
                 </div>
 
             </div>
 
             <button type="submit" id="submitBtn">ارسال بریف به تیم طراحی</button>
+            <div id="resultMessage" class="result-message"></div>
         </form>
     </div>
 
     <script>
-        document.getElementById('briefForm').addEventListener('submit', async function(e) {
+        const form = document.getElementById('briefForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const resultMessage = document.getElementById('resultMessage');
+
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerText = 'در حال ارسال...';
+            submitBtn.innerText = 'در حال ارسال بریف...';
             submitBtn.disabled = true;
+            resultMessage.style.display = 'none';
 
-            const formData = {
-                business_goal: document.getElementById('business_goal').value,
-                main_headline: document.getElementById('main_headline').value,
-                sub_headline: document.getElementById('sub_headline').value,
-                features: document.getElementById('features').value,
-                cta: document.getElementById('cta').value,
-                banner_sizes: document.getElementById('banner_sizes').value,
-                size_limit: document.getElementById('size_limit').value,
-                placement_links: document.getElementById('placement_links').value,
-                language: document.getElementById('language').value,
-                notes: document.getElementById('notes').value,
-                timestamp: new Date().toLocaleString('fa-IR')
-            };
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
 
-            // آدرس وب‌هوک n8n خود را در پایین قرار دهید
-            const n8nWebhookUrl = 'https://your-n8n-instance.com/webhook/your-endpoint-id';
-
-            try {
-                const response = await fetch(n8nWebhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    alert('بریف با موفقیت ثبت شد و برای طراح ارسال گردید.');
-                    document.getElementById('briefForm').reset();
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status == 200) {
+                    resultMessage.className = "result-message success";
+                    resultMessage.innerText = "بریف با موفقیت ثبت شد و مستقیماً به ایمیل طراح ارسال گردید.";
+                    resultMessage.style.display = 'block';
+                    form.reset();
                 } else {
-                    alert('خطایی در ارسال رخ داد. لطفاً دوباره تلاش کنید.');
+                    console.log(response);
+                    resultMessage.className = "result-message error";
+                    resultMessage.innerText = res.message || "خطایی رخ داد. مجدداً تلاش کنید.";
+                    resultMessage.style.display = 'block';
                 }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('ارتباط با سرور برقرار نشد.');
-            } finally {
+            })
+            .catch(error => {
+                console.log(error);
+                resultMessage.className = "result-message error";
+                resultMessage.innerText = "ارتباط با سرور برقرار نشد. وضعیت اینترنت خود را بررسی کنید.";
+                resultMessage.style.display = 'block';
+            })
+            .then(() => {
                 submitBtn.innerText = 'ارسال بریف به تیم طراحی';
                 submitBtn.disabled = false;
-            }
+            });
         });
     </script>
 </body>
